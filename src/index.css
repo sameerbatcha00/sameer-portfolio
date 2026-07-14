@@ -29,34 +29,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body.light-theme {
-  --bg-primary: #f5f7fb;
-  --bg-secondary: #eef2f9;
-  --bg-tertiary: #e4eaf5;
-  --accent-cyan: #00b4d8;
-  --accent-blue: #0077b6;
-  --accent-purple: #7209b7;
-  --accent-pink: #d90429;
-  --text-primary: #1e293b;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  
-  --glass-bg: rgba(255, 255, 255, 0.65);
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --glass-glow: rgba(114, 9, 183, 0.08);
-  --card-bg: rgba(255, 255, 255, 0.55);
-  --card-border: rgba(0, 0, 0, 0.05);
-  --nav-bg: rgba(245, 247, 251, 0.5);
-  --btn-outline-border: rgba(0, 0, 0, 0.15);
-  
-  color-scheme: light;
-}
-
-body.light-theme .blur-orb {
-  opacity: 0.18;
-  mix-blend-mode: normal;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;

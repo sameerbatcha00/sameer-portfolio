@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { FiSun, FiMoon } from "react-icons/fi";
 
 const navItems = [
   { label: "About", id: "about" },
@@ -12,7 +11,7 @@ const navItems = [
   { label: "Contact", id: "contact" },
 ];
 
-export default function Navbar({ activeSection, theme, toggleTheme }) {
+export default function Navbar({ activeSection }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleNavClick = (id) => {
@@ -44,25 +43,16 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
               )}
             </button>
           ))}
-          <button onClick={toggleTheme} className="theme-toggle-btn" aria-label="Toggle Theme">
-            {theme === "light" ? <FiMoon size={18} /> : <FiSun size={18} />}
-          </button>
         </nav>
 
-        {/* Mobile Controls */}
-        <div className="mobile-controls">
-          <button onClick={toggleTheme} className="theme-toggle-btn" aria-label="Toggle Theme">
-            {theme === "light" ? <FiMoon size={18} /> : <FiSun size={18} />}
-          </button>
-          
-          <button
-            className="nav-mobile-toggle"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <HiX size={26} /> : <HiMenuAlt3 size={26} />}
-          </button>
-        </div>
+        {/* Mobile Nav Button */}
+        <button
+          className="nav-mobile-toggle"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <HiX size={26} /> : <HiMenuAlt3 size={26} />}
+        </button>
       </div>
 
       {/* Mobile Menu Overlay */}

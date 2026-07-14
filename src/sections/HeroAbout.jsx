@@ -20,6 +20,16 @@ const itemVariants = {
   },
 };
 
+const photoVariants = {
+  hidden: { scale: 0.75, rotate: -10, opacity: 0 },
+  visible: {
+    scale: 1,
+    rotate: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 80, damping: 14, delay: 0.6 },
+  },
+};
+
 export default function HeroAbout() {
   const achievements = [
     { number: "8.06 CGPA", text: "B.E. Computer Science" },
@@ -67,7 +77,7 @@ export default function HeroAbout() {
 
           {/* Profile Photo Area */}
           <motion.div
-            variants={itemVariants}
+            variants={photoVariants}
             className="hero-photo-container"
           >
             <div className="photo-wrapper">
