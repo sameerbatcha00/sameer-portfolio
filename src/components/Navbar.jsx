@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { label: "About", id: "about" },
@@ -10,6 +11,35 @@ const navItems = [
   { label: "CTA", id: "cta" },
   { label: "Contact", id: "contact" },
 ];
+
+const overlayVariants = {
+  hidden: { opacity: 0, x: "100%" },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 110,
+      damping: 20,
+      staggerChildren: 0.08,
+      delayChildren: 0.15
+    }
+  },
+  exit: {
+    opacity: 0,
+    x: "100%",
+    transition: { ease: "easeInOut", duration: 0.3 }
+  }
+};
+
+const linkVariants = {
+  hidden: { x: 40, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 90, damping: 14 }
+  }
+};
 
 export default function Navbar({ activeSection }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,22 +86,43 @@ export default function Navbar({ activeSection }) {
       </div>
 
       {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div className="mobile-menu-overlay">
-          <div className="mobile-menu-container">
-            {navItems.map((item, idx) => (
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="mobile-menu-overlay"
+            variants={overlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <div className="mobile-menu-header">
+              <span className="nav-logo">
+                SAMEER<span>BATCHA</span>
+              </span>
               <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`mobile-nav-link ${activeSection === item.id ? "active" : ""}`}
-                style={{ animationDelay: `${idx * 0.08}s` }}
+                className="menu-close-btn"
+                onClick={() => setIsOpen(false)}
+                aria-label="Close menu"
               >
-                {item.label}
+                <HiX size={26} />
               </button>
-            ))}
-          </div>
-        </div>
-      )}
+            </div>
+
+            <div className="mobile-menu-container">
+              {navItems.map((item, idx) => (
+                <motion.button
+                  key={item.id}
+                  variants={linkVariants}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`mobile-nav-link ${activeSection === item.id ? "active" : ""}`}
+                >
+                  <span className="link-number">0{idx + 1}.</span> {item.label}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <style>{`
         .navbar-header {
@@ -166,58 +217,55 @@ export default function Navbar({ activeSection }) {
         }
 
         .theme-toggle-btn {
-          background: transparent;
-          border: none;
-          color: var(--text-primary);
-          cursor: pointer;
-          padding: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          transition: all 0.3s ease;
-          border: 1px solid var(--glass-border);
-          background: var(--card-bg);
-          margin-left: 8px;
-        }
-
-        .theme-toggle-btn:hover {
-          color: var(--accent-cyan);
-          border-color: var(--accent-cyan);
-          transform: scale(1.08);
-        }
-
-        .mobile-controls {
           display: none;
-          align-items: center;
-          gap: 12px;
         }
 
         /* Mobile Overlay Styling */
         .mobile-menu-overlay {
           position: fixed;
-          top: 72px; /* Height of header */
+          top: 0;
           left: 0;
           width: 100vw;
-          height: calc(100vh - 72px);
-          height: calc(100dvh - 72px);
-          background: var(--mobile-overlay-bg);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
+          height: 100vh;
+          height: 100dvh;
+          background: rgba(4, 2, 16, 0.97);
+          backdrop-filter: blur(25px);
+          -webkit-backdrop-filter: blur(25px);
           display: flex;
           flex-direction: column;
+          z-index: 1000;
+          padding: 24px 6%;
+        }
+
+        .mobile-menu-header {
+          display: flex;
+          justify-content: space-between;
           align-items: center;
-          justify-content: center;
-          z-index: 99;
-          animation: fadeInOverlay 0.3s forwards ease-out;
+          width: 100%;
+          margin-bottom: 50px;
+        }
+
+        .menu-close-btn {
+          background: transparent;
+          border: none;
+          color: var(--text-primary);
+          cursor: pointer;
+          padding: 6px;
+          transition: transform 0.2s ease;
+        }
+
+        .menu-close-btn:hover {
+          transform: scale(1.1);
         }
 
         .mobile-menu-container {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          gap: 28px;
+          align-items: flex-start;
+          gap: 24px;
           width: 100%;
+          max-width: 320px;
+          margin: 0 auto;
         }
 
         .mobile-nav-link {
@@ -225,31 +273,27 @@ export default function Navbar({ activeSection }) {
           border: none;
           color: var(--text-secondary);
           font-family: var(--font-sans);
-          font-size: 1.8rem;
-          font-weight: 700;
+          font-size: 2rem;
+          font-weight: 800;
           cursor: pointer;
           transition: all 0.3s ease;
-          opacity: 0;
-          transform: translateY(20px);
-          animation: slideUpLink 0.4s forwards ease-out;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          text-align: left;
+          width: 100%;
+        }
+
+        .link-number {
+          font-family: var(--font-mono);
+          font-size: 1rem;
+          color: var(--accent-cyan);
+          font-weight: 500;
         }
 
         .mobile-nav-link:hover, .mobile-nav-link.active {
-          color: var(--text-primary);
-          transform: scale(1.1);
-          text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
-        }
-
-        @keyframes fadeInOverlay {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        @keyframes slideUpLink {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          color: white;
+          transform: translateX(10px);
         }
 
         @media (max-width: 768px) {
