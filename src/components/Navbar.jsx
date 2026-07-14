@@ -256,9 +256,8 @@ export default function Navbar({ activeSection }) {
           .nav-desktop {
             display: none;
           }
-          .mobile-controls {
-            display: flex;
-            align-items: center;
+          .nav-mobile-toggle {
+            display: block;
           }
         }
       `}</style>

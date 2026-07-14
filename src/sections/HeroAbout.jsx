@@ -248,6 +248,27 @@ export default function HeroAbout() {
             height: 250px;
           }
         }
+
+        @media (max-width: 480px) {
+          .achievements-row {
+            grid-template-columns: 1fr;
+            gap: 12px;
+            width: 100%;
+          }
+          
+          .hero-name {
+            font-size: 2.1rem;
+          }
+          
+          .photo-wrapper {
+            width: 200px;
+            height: 200px;
+          }
+          
+          .achievement-card {
+            padding: 12px;
+          }
+        }
       `}</style>
     </section>
   );

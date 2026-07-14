@@ -352,3 +352,18 @@ p.section-subtitle {
     margin-bottom: 24px;
   }
 }
+
+@media (max-width: 480px) {
+  .section-slide {
+    padding: 60px 10px 70px;
+  }
+  
+  .glass-panel {
+    padding: 16px;
+  }
+  
+  h2.section-title {
+    font-size: 1.7rem;
+    margin-bottom: 16px;
+  }
+}
