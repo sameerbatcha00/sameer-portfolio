@@ -271,7 +271,7 @@ export default function Contact() {
         .contact-subtitle {
           font-size: 1.3rem;
           font-weight: 700;
-          color: white;
+          color: var(--text-primary);
           margin-bottom: 16px;
         }
 
@@ -327,8 +327,8 @@ export default function Contact() {
           width: 42px;
           height: 42px;
           border-radius: 50%;
-          border: 1px solid var(--glass-border);
-          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid var(--card-border);
+          background: var(--card-bg);
           color: var(--text-secondary);
           display: flex;
           align-items: center;
@@ -339,7 +339,7 @@ export default function Contact() {
         }
 
         .social-icon-btn:hover {
-          color: white;
+          color: var(--text-primary);
         }
 
         /* Success Box Styles */
@@ -372,7 +372,7 @@ export default function Contact() {
         .success-box h3 {
           font-size: 1.6rem;
           font-weight: 700;
-          color: white;
+          color: var(--text-primary);
           margin-bottom: 12px;
         }
 

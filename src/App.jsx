@@ -16,6 +16,23 @@ import Contact from "./sections/Contact";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("about");
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "dark";
+  });
+
+  useEffect(() => {
+    const root = document.body;
+    if (theme === "light") {
+      root.classList.add("light-theme");
+    } else {
+      root.classList.remove("light-theme");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
 
   // Track scroll intersection for active link highlighting
   useEffect(() => {
@@ -70,7 +87,11 @@ export default function App() {
       <ParticlesBg />
 
       {/* Floating navigation overlay */}
-      <Navbar activeSection={activeSection} />
+      <Navbar 
+        activeSection={activeSection} 
+        theme={theme} 
+        toggleTheme={toggleTheme} 
+      />
 
       {/* Main stacked sections in scrollable flow */}
       <main>

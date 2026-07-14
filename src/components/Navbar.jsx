@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { FiSun, FiMoon } from "react-icons/fi";
 
 const navItems = [
-  { label: "About", id: "About" },
+  { label: "About", id: "about" },
   { label: "Projects", id: "projects" },
   { label: "Skills", id: "skills" },
   { label: "Coding", id: "coding" },
@@ -11,7 +12,7 @@ const navItems = [
   { label: "Contact", id: "contact" },
 ];
 
-export default function Navbar({ activeSection }) {
+export default function Navbar({ activeSection, theme, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleNavClick = (id) => {
@@ -25,8 +26,8 @@ export default function Navbar({ activeSection }) {
   return (
     <header className="navbar-header">
       <div className="nav-container">
-        <a href="#" className="nav-logo" onClick={(e) => { e.preventDefault(); handleNavClick("intro"); }}>
-          SAMEER<span>.DEV</span>
+        <a href="#" className="nav-logo" onClick={(e) => { e.preventDefault(); handleNavClick("about"); }}>
+          SAMEER<span>BATCHA</span>
         </a>
 
         {/* Desktop Nav */}
@@ -43,16 +44,25 @@ export default function Navbar({ activeSection }) {
               )}
             </button>
           ))}
+          <button onClick={toggleTheme} className="theme-toggle-btn" aria-label="Toggle Theme">
+            {theme === "light" ? <FiMoon size={18} /> : <FiSun size={18} />}
+          </button>
         </nav>
 
-        {/* Mobile Nav Button */}
-        <button
-          className="nav-mobile-toggle"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <HiX size={26} /> : <HiMenuAlt3 size={26} />}
-        </button>
+        {/* Mobile Controls */}
+        <div className="mobile-controls">
+          <button onClick={toggleTheme} className="theme-toggle-btn" aria-label="Toggle Theme">
+            {theme === "light" ? <FiMoon size={18} /> : <FiSun size={18} />}
+          </button>
+          
+          <button
+            className="nav-mobile-toggle"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <HiX size={26} /> : <HiMenuAlt3 size={26} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -80,10 +90,10 @@ export default function Navbar({ activeSection }) {
           left: 0;
           width: 100%;
           z-index: 100;
-          background: rgba(3, 0, 30, 0.5);
+          background: var(--nav-bg);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid var(--glass-border);
           padding: 18px 4%;
           transition: all 0.3s ease;
         }
@@ -101,7 +111,7 @@ export default function Navbar({ activeSection }) {
           font-size: 1.4rem;
           font-weight: 800;
           text-decoration: none;
-          color: white;
+          color: var(--text-primary);
           letter-spacing: 1px;
           transition: transform 0.3s ease;
         }
@@ -136,7 +146,7 @@ export default function Navbar({ activeSection }) {
         }
 
         .nav-link:hover, .nav-link.active {
-          color: white;
+          color: var(--text-primary);
         }
 
         .active-dot {
@@ -155,7 +165,7 @@ export default function Navbar({ activeSection }) {
           display: none;
           background: transparent;
           border: none;
-          color: white;
+          color: var(--text-primary);
           cursor: pointer;
           padding: 6px;
           transition: transform 0.2s ease;
@@ -163,6 +173,34 @@ export default function Navbar({ activeSection }) {
 
         .nav-mobile-toggle:hover {
           transform: scale(1.1);
+        }
+
+        .theme-toggle-btn {
+          background: transparent;
+          border: none;
+          color: var(--text-primary);
+          cursor: pointer;
+          padding: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          transition: all 0.3s ease;
+          border: 1px solid var(--glass-border);
+          background: var(--card-bg);
+          margin-left: 8px;
+        }
+
+        .theme-toggle-btn:hover {
+          color: var(--accent-cyan);
+          border-color: var(--accent-cyan);
+          transform: scale(1.08);
+        }
+
+        .mobile-controls {
+          display: none;
+          align-items: center;
+          gap: 12px;
         }
 
         /* Mobile Overlay Styling */
@@ -173,7 +211,7 @@ export default function Navbar({ activeSection }) {
           width: 100vw;
           height: calc(100vh - 72px);
           height: calc(100dvh - 72px);
-          background: rgba(3, 0, 30, 0.95);
+          background: var(--mobile-overlay-bg);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           display: flex;
@@ -207,7 +245,7 @@ export default function Navbar({ activeSection }) {
         }
 
         .mobile-nav-link:hover, .mobile-nav-link.active {
-          color: white;
+          color: var(--text-primary);
           transform: scale(1.1);
           text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
         }
@@ -228,8 +266,9 @@ export default function Navbar({ activeSection }) {
           .nav-desktop {
             display: none;
           }
-          .nav-mobile-toggle {
-            display: block;
+          .mobile-controls {
+            display: flex;
+            align-items: center;
           }
         }
       `}</style>

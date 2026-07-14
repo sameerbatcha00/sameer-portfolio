@@ -155,19 +155,19 @@ export default function CodingProfiles() {
         }
 
         .profile-icon {
-          background: rgba(255, 255, 255, 0.03);
+          background: var(--card-bg);
           padding: 10px;
           border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--card-border);
         }
 
         .profile-name {
           font-size: 1.3rem;
           font-weight: 700;
-          color: white;
+          color: var(--text-primary);
         }
 
         .profile-tagline {
@@ -182,7 +182,7 @@ export default function CodingProfiles() {
         }
 
         .profile-card:hover .link-arrow {
-          color: white;
+          color: var(--text-primary);
           transform: translate(2px, -2px);
         }
 
@@ -190,10 +190,10 @@ export default function CodingProfiles() {
           display: flex;
           flex-direction: column;
           gap: 12px;
-          background: rgba(0, 0, 0, 0.2);
+          background: var(--bg-secondary);
           border-radius: 12px;
           padding: 16px;
-          border: 1px solid rgba(255, 255, 255, 0.02);
+          border: 1px solid var(--card-border);
         }
 
         .stat-row {

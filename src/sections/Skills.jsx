@@ -140,25 +140,25 @@ export default function Skills() {
         }
 
         .skills-category-group {
-          background: rgba(255, 255, 255, 0.01);
-          border: 1px solid rgba(255, 255, 255, 0.03);
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
           border-radius: 16px;
           padding: 24px;
           transition: all 0.3s ease;
         }
 
         .skills-category-group:hover {
-          background: rgba(255, 255, 255, 0.03);
-          border-color: rgba(255, 255, 255, 0.08);
+          background: var(--card-bg);
+          border-color: var(--accent-purple);
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         .category-title {
           font-size: 1.2rem;
           font-weight: 700;
-          color: white;
+          color: var(--text-primary);
           margin-bottom: 20px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          border-bottom: 1px solid var(--card-border);
           padding-bottom: 8px;
           letter-spacing: 0.5px;
         }

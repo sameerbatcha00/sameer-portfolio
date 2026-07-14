@@ -18,11 +18,43 @@
   --glass-bg: rgba(10, 5, 30, 0.45);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-glow: rgba(155, 81, 224, 0.15);
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --nav-bg: rgba(3, 0, 30, 0.5);
+  --btn-outline-border: rgba(255, 255, 255, 0.15);
   
   font-family: var(--font-sans);
   color-scheme: dark;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body.light-theme {
+  --bg-primary: #f5f7fb;
+  --bg-secondary: #eef2f9;
+  --bg-tertiary: #e4eaf5;
+  --accent-cyan: #00b4d8;
+  --accent-blue: #0077b6;
+  --accent-purple: #7209b7;
+  --accent-pink: #d90429;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-glow: rgba(114, 9, 183, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.55);
+  --card-border: rgba(0, 0, 0, 0.05);
+  --nav-bg: rgba(245, 247, 251, 0.5);
+  --btn-outline-border: rgba(0, 0, 0, 0.15);
+  
+  color-scheme: light;
+}
+
+body.light-theme .blur-orb {
+  opacity: 0.18;
+  mix-blend-mode: normal;
 }
 
 * {
@@ -73,7 +105,11 @@ body {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 50%, var(--bg-secondary), var(--bg-primary));
+  background: 
+    radial-gradient(at 0% 0%, rgba(0, 242, 254, 0.12) 0px, transparent 55%), 
+    radial-gradient(at 100% 0%, rgba(155, 81, 224, 0.12) 0px, transparent 55%), 
+    radial-gradient(at 50% 100%, rgba(255, 0, 127, 0.1) 0px, transparent 55%), 
+    linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
 }
 
 .blur-orb {
@@ -167,10 +203,10 @@ body {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--card-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
   border-radius: 16px;
   padding: 24px;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -180,8 +216,8 @@ body {
 
 .glass-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--accent-cyan);
+  background: var(--card-bg);
 }
 
 /* Typography styles */
@@ -265,7 +301,7 @@ p.section-subtitle {
 .btn-outline {
   background: transparent;
   color: var(--text-primary);
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--btn-outline-border);
   padding: 13px 27px;
   font-size: 1rem;
   font-weight: 600;
@@ -281,7 +317,7 @@ p.section-subtitle {
 
 .btn-outline:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: var(--accent-purple);
   transform: translateY(-2px);
 }
 
@@ -337,7 +373,6 @@ p.section-subtitle {
   
   .glass-panel {
     padding: 24px;
-    max-height: 80vh;
   }
   
   h2.section-title {

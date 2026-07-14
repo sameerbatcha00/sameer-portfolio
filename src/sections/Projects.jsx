@@ -206,7 +206,7 @@ export default function Projects() {
         }
 
         .filter-btn:hover, .filter-btn.active {
-          color: white;
+          color: var(--text-primary);
           background: rgba(155, 81, 224, 0.2);
           border-color: var(--accent-purple);
           box-shadow: 0 0 10px rgba(155, 81, 224, 0.2);
@@ -224,7 +224,7 @@ export default function Projects() {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          background: rgba(10, 5, 30, 0.35);
+          background: var(--card-bg);
           cursor: grab;
         }
 
@@ -243,7 +243,7 @@ export default function Projects() {
         .proj-title {
           font-size: 1.5rem;
           font-weight: 700;
-          color: white;
+          color: var(--text-primary);
           margin-bottom: 12px;
         }
 
@@ -264,8 +264,8 @@ export default function Projects() {
         .tag {
           font-family: var(--font-mono);
           font-size: 0.75rem;
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.06);
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
           padding: 3px 10px;
           border-radius: 4px;
           color: var(--text-secondary);
@@ -281,7 +281,7 @@ export default function Projects() {
           align-items: center;
           gap: 6px;
           background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid var(--btn-outline-border);
           color: var(--text-primary);
           padding: 6px 14px;
           border-radius: 8px;
@@ -293,9 +293,9 @@ export default function Projects() {
         }
 
         .proj-btn:hover {
-          background: rgba(255, 255, 255, 0.06);
-          border-color: white;
-          color: white;
+          background: rgba(255, 255, 255, 0.05);
+          border-color: var(--accent-cyan);
+          color: var(--accent-cyan);
         }
 
         @media (max-width: 768px) {

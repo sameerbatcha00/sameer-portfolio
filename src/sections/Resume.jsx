@@ -167,7 +167,7 @@ export default function Resume() {
         .sub-header {
           font-size: 1.2rem;
           font-weight: 700;
-          color: white;
+          color: var(--text-primary);
           margin-bottom: 24px;
           display: flex;
           align-items: center;
@@ -176,7 +176,7 @@ export default function Resume() {
 
         /* Timeline Styles */
         .timeline-track {
-          border-left: 2px solid rgba(255, 255, 255, 0.05);
+          border-left: 2px solid var(--card-border);
           padding-left: 20px;
           margin-left: 10px;
           display: flex;
@@ -211,7 +211,7 @@ export default function Resume() {
         .node-title {
           font-size: 1.15rem;
           font-weight: 700;
-          color: white;
+          color: var(--text-primary);
         }
 
         .node-company {
@@ -239,7 +239,7 @@ export default function Resume() {
           display: flex;
           align-items: center;
           gap: 16px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid var(--card-border);
           padding-bottom: 16px;
         }
 
@@ -259,7 +259,7 @@ export default function Resume() {
         .preview-name {
           font-size: 1.25rem;
           font-weight: 700;
-          color: white;
+          color: var(--text-primary);
         }
 
         .preview-tag {
