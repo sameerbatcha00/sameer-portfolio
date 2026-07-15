@@ -56,7 +56,7 @@ export default function CodingProfiles() {
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, amount: 0.15 }}
-        transition={{ type: "spring", stiffness: 80, damping: 14 }}
+        transition={{ type: "spring", stiffness: 35, damping: 15 }}
       >
         <h2 className="section-title">Coding Profiles</h2>
         

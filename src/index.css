@@ -30,7 +30,6 @@
 }
 
 html {
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
@@ -161,8 +160,6 @@ main {
   padding: 100px 4% 60px; /* Leave space for floating navbar */
   box-sizing: border-box;
   overflow: hidden;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 /* Glassmorphism Container styling */

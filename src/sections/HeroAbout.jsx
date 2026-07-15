@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
 
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, y: 80 },
   visible: {
     opacity: 1,
+    y: 0,
     transition: {
+      type: "spring",
+      stiffness: 35,
+      damping: 15,
       staggerChildren: 0.15,
       delayChildren: 0.2,
     },
@@ -47,7 +51,18 @@ export default function HeroAbout() {
         viewport={{ once: false, amount: 0.15 }}
       >
         <div className="hero-grid">
-          {/* Text Content */}
+          {/* Profile Photo Area (Comes first/left) */}
+          <motion.div
+            variants={photoVariants}
+            className="hero-photo-container"
+          >
+            <div className="photo-wrapper">
+              <img src="/profile.jpg" alt="Sameer Batcha R" className="profile-img" />
+              <div className="photo-glow-border" />
+            </div>
+          </motion.div>
+
+          {/* Text Content & Information */}
           <div className="hero-text-content">
             <motion.div variants={itemVariants} className="hero-greeting">
               <span>Welcome to my Portfolio</span>
@@ -75,17 +90,6 @@ export default function HeroAbout() {
               ))}
             </motion.div>
           </div>
-
-          {/* Profile Photo Area */}
-          <motion.div
-            variants={photoVariants}
-            className="hero-photo-container"
-          >
-            <div className="photo-wrapper">
-              <img src="/profile.jpg" alt="Sameer Batcha R" className="profile-img" />
-              <div className="photo-glow-border" />
-            </div>
-          </motion.div>
         </div>
       </motion.div>
 
@@ -96,7 +100,7 @@ export default function HeroAbout() {
 
         .hero-grid {
           display: grid;
-          grid-template-columns: 1.2fr 0.8fr;
+          grid-template-columns: 0.85fr 1.15fr;
           gap: 40px;
           align-items: center;
         }
