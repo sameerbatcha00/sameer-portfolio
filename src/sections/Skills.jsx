@@ -55,10 +55,10 @@ export default function Skills() {
     <section className="section-slide" id="skills">
       <motion.div
         className="glass-panel skills-panel"
-        initial={{ opacity: 0, y: 55 }}
+        initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.15 }}
+        transition={{ type: "spring", stiffness: 80, damping: 14 }}
       >
         <h2 className="section-title">Technical Expertise</h2>
         
@@ -67,7 +67,7 @@ export default function Skills() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-120px" }}
+          viewport={{ once: false, amount: 0.15 }}
         >
           {skillCategories.map((cat, catIdx) => (
             <motion.div
@@ -148,9 +148,9 @@ export default function Skills() {
         }
 
         .skills-category-group:hover {
-          background: var(--card-bg);
-          border-color: var(--accent-purple);
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+          background: rgba(255, 255, 255, 0.6);
+          border-color: var(--accent-cyan);
+          box-shadow: 0 10px 25px rgba(120, 110, 95, 0.06);
         }
 
         .category-title {
@@ -209,15 +209,14 @@ export default function Skills() {
         .skill-track {
           width: 100%;
           height: 6px;
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(0, 0, 0, 0.06);
           border-radius: 3px;
           overflow: hidden;
         }
 
         .skill-fill {
           height: 100%;
-          background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-          box-shadow: 0 0 8px var(--accent-blue);
+          background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
           border-radius: 3px;
         }
       `}</style>

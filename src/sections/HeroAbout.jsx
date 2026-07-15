@@ -43,7 +43,8 @@ export default function HeroAbout() {
         className="glass-panel hero-panel"
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.15 }}
       >
         <div className="hero-grid">
           {/* Text Content */}
@@ -120,7 +121,7 @@ export default function HeroAbout() {
           font-weight: 800;
           line-height: 1.1;
           margin-bottom: 12px;
-          background: linear-gradient(135deg, #ffffff 40%, var(--accent-blue) 100%);
+          background: linear-gradient(135deg, var(--text-primary) 40%, var(--accent-blue) 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -146,8 +147,8 @@ export default function HeroAbout() {
         }
 
         .achievement-card {
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: rgba(255, 255, 255, 0.45);
+          border: 1px solid rgba(212, 196, 172, 0.25);
           border-radius: 12px;
           padding: 16px;
           text-align: center;
@@ -155,16 +156,17 @@ export default function HeroAbout() {
         }
 
         .achievement-card:hover {
-          background: rgba(255, 255, 255, 0.05);
-          border-color: rgba(0, 242, 254, 0.3);
+          background: rgba(255, 255, 255, 0.6);
+          border-color: var(--accent-cyan);
           transform: translateY(-3px);
+          box-shadow: 0 8px 24px rgba(120, 110, 95, 0.05);
         }
 
         .ach-num {
           font-size: 1.8rem;
           font-weight: 800;
           color: var(--accent-cyan);
-          text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+          text-shadow: 0 0 10px rgba(197, 168, 128, 0.15);
         }
 
         .ach-txt {
@@ -187,15 +189,15 @@ export default function HeroAbout() {
           height: 320px;
           border-radius: 30px;
           overflow: hidden;
-          border: 2.5px solid rgba(255, 255, 255, 0.08);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 25px rgba(155, 81, 224, 0.15);
+          border: 2.5px solid rgba(212, 196, 172, 0.3);
+          box-shadow: 0 15px 35px rgba(120, 110, 95, 0.12), 0 0 25px rgba(197, 168, 128, 0.1);
           transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
         }
 
         .photo-wrapper:hover {
           transform: scale(1.03) rotate(1deg);
           border-color: var(--accent-cyan);
-          box-shadow: 0 20px 45px rgba(0,0,0,0.6), 0 0 30px rgba(0, 242, 254, 0.35);
+          box-shadow: 0 20px 40px rgba(120, 110, 95, 0.18), 0 0 30px rgba(197, 168, 128, 0.25);
         }
 
         .profile-img {
@@ -216,9 +218,9 @@ export default function HeroAbout() {
           width: 100%;
           height: 100%;
           border-radius: 28px;
-          box-shadow: inset 0 0 25px rgba(0, 242, 254, 0.2);
+          box-shadow: inset 0 0 25px rgba(197, 168, 128, 0.15);
           pointer-events: none;
-          background: linear-gradient(135deg, rgba(0, 242, 254, 0.15) 0%, transparent 100%);
+          background: linear-gradient(135deg, rgba(197, 168, 128, 0.1) 0%, transparent 100%);
         }
 
         @media (max-width: 900px) {

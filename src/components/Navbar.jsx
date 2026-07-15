@@ -41,14 +41,18 @@ const linkVariants = {
   }
 };
 
-export default function Navbar({ activeSection }) {
+export default function Navbar({ activeSection, onNavigate }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleNavClick = (id) => {
     setIsOpen(false);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+    if (onNavigate) {
+      onNavigate(id);
+    } else {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -228,7 +232,7 @@ export default function Navbar({ activeSection }) {
           width: 100vw;
           height: 100vh;
           height: 100dvh;
-          background: rgba(4, 2, 16, 0.97);
+          background: rgba(250, 247, 242, 0.98);
           backdrop-filter: blur(25px);
           -webkit-backdrop-filter: blur(25px);
           display: flex;
@@ -292,7 +296,7 @@ export default function Navbar({ activeSection }) {
         }
 
         .mobile-nav-link:hover, .mobile-nav-link.active {
-          color: white;
+          color: var(--text-primary);
           transform: translateX(10px);
         }
 

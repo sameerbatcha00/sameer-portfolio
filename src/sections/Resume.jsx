@@ -61,10 +61,10 @@ export default function Resume() {
     <section className="section-slide" id="resume">
       <motion.div
         className="glass-panel resume-panel"
-        initial={{ opacity: 0, y: 55 }}
+        initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.15 }}
+        transition={{ type: "spring", stiffness: 80, damping: 14 }}
       >
         <h2 className="section-title">Resume Hub</h2>
 
@@ -196,8 +196,8 @@ export default function Resume() {
           height: 12px;
           border-radius: 50%;
           background: var(--bg-primary);
-          border: 2px solid var(--accent-purple);
-          box-shadow: 0 0 8px var(--accent-purple);
+          border: 2px solid var(--accent-cyan);
+          box-shadow: 0 2px 6px rgba(197, 168, 128, 0.3);
         }
 
         .node-year {

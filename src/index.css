@@ -1,32 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
 
 :root {
-  --bg-primary: #03001e;
-  --bg-secondary: #0a0024;
-  --bg-tertiary: #12002f;
-  --accent-cyan: #00f2fe;
-  --accent-blue: #4facfe;
-  --accent-purple: #9b51e0;
-  --accent-pink: #ff007f;
-  --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
+  --bg-primary: #FAF6EE;
+  --bg-secondary: #EAE3D2;
+  --bg-tertiary: #DFD5BE;
+  --accent-cyan: #C5A880;
+  --accent-blue: #8D7B68;
+  --accent-purple: #2C2924;
+  --accent-pink: #A88F6D;
+  --text-primary: #2A2421;
+  --text-secondary: #6E6259;
+  --text-muted: #9E9288;
   
   --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'Fira Code', monospace;
   
-  --glass-bg: rgba(10, 5, 30, 0.45);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-glow: rgba(155, 81, 224, 0.15);
-  --card-bg: rgba(255, 255, 255, 0.02);
-  --card-border: rgba(255, 255, 255, 0.05);
-  --nav-bg: rgba(3, 0, 30, 0.5);
-  --btn-outline-border: rgba(255, 255, 255, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(212, 196, 172, 0.3);
+  --glass-glow: rgba(197, 168, 128, 0.15);
+  --card-bg: rgba(255, 255, 255, 0.45);
+  --card-border: rgba(212, 196, 172, 0.25);
+  --nav-bg: rgba(250, 247, 242, 0.75);
+  --btn-outline-border: rgba(141, 123, 104, 0.3);
   
   font-family: var(--font-sans);
-  color-scheme: dark;
+  color-scheme: light;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -40,7 +45,6 @@ body {
   color: var(--text-primary);
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-behavior: smooth;
   width: 100vw;
   min-height: 100vh;
 }
@@ -51,14 +55,14 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.02);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--glass-border);
+  background: rgba(141, 123, 104, 0.2);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-purple);
+  background: var(--accent-cyan);
 }
 
 #root {
@@ -67,20 +71,20 @@ body {
   position: relative;
 }
 
-/* Background floating gradient blurs */
+/* Background floating gradient blurs (placed behind particles at z-index -2) */
 .bg-gradients {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: -2;
   pointer-events: none;
   overflow: hidden;
   background: 
-    radial-gradient(at 0% 0%, rgba(0, 242, 254, 0.12) 0px, transparent 55%), 
-    radial-gradient(at 100% 0%, rgba(155, 81, 224, 0.12) 0px, transparent 55%), 
-    radial-gradient(at 50% 100%, rgba(255, 0, 127, 0.1) 0px, transparent 55%), 
+    radial-gradient(at 0% 0%, rgba(197, 168, 128, 0.25) 0px, transparent 60%), 
+    radial-gradient(at 100% 0%, rgba(141, 123, 104, 0.25) 0px, transparent 60%), 
+    radial-gradient(at 50% 100%, rgba(168, 143, 109, 0.2) 0px, transparent 65%), 
     linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
 }
 
@@ -88,9 +92,14 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.35;
-  mix-blend-mode: screen;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
   pointer-events: none;
+}
+
+main {
+  position: relative;
+  z-index: 2; /* Force main content to render on top of backdrop and particles */
 }
 
 .orb-cyan {
@@ -152,17 +161,19 @@ body {
   padding: 100px 4% 60px; /* Leave space for floating navbar */
   box-sizing: border-box;
   overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* Glassmorphism Container styling */
 .glass-panel {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: 40px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  box-shadow: 0 15px 45px rgba(120, 110, 95, 0.08);
   max-width: 1100px;
   width: 100%;
   position: relative;
@@ -170,8 +181,8 @@ body {
 }
 
 .glass-panel:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px 0 var(--glass-glow);
+  border-color: rgba(197, 168, 128, 0.45);
+  box-shadow: 0 15px 45px rgba(197, 168, 128, 0.15);
 }
 
 .glass-card {
@@ -189,7 +200,8 @@ body {
 .glass-card:hover {
   transform: translateY(-5px);
   border-color: var(--accent-cyan);
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 12px 30px rgba(120, 110, 95, 0.06);
 }
 
 /* Typography styles */
@@ -198,7 +210,7 @@ h1.section-title {
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 24px;
-  background: linear-gradient(135deg, #fff 30%, var(--text-secondary) 100%);
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--text-secondary) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -210,7 +222,7 @@ h2.section-title {
   text-align: center;
   margin-bottom: 40px;
   letter-spacing: -0.02em;
-  background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+  background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan), var(--accent-pink));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

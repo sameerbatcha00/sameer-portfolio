@@ -95,8 +95,8 @@ function TiltCard({ project }) {
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       style={{
         transformStyle: "preserve-3d",
-        borderTop: isHovered ? `1px solid ${project.color}` : "1px solid rgba(255, 255, 255, 0.05)",
-        boxShadow: isHovered ? `0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px ${project.color}1e` : "none"
+        borderTop: isHovered ? `1px solid ${project.color}` : "1px solid var(--card-border)",
+        boxShadow: isHovered ? `0 10px 30px rgba(120, 110, 95, 0.12), 0 0 20px ${project.color}1e` : "none"
       }}
     >
       <div style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}>
@@ -140,10 +140,10 @@ export default function Projects() {
     <section className="section-slide" id="projects">
       <motion.div
         className="glass-panel projects-panel"
-        initial={{ opacity: 0, y: 55 }}
+        initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.15 }}
+        transition={{ type: "spring", stiffness: 80, damping: 14 }}
       >
         <h2 className="section-title">Featured Work</h2>
 
@@ -193,7 +193,7 @@ export default function Projects() {
         }
 
         .filter-btn {
-          background: rgba(255, 255, 255, 0.02);
+          background: rgba(255, 255, 255, 0.45);
           border: 1px solid var(--glass-border);
           padding: 8px 18px;
           color: var(--text-secondary);
@@ -207,9 +207,9 @@ export default function Projects() {
 
         .filter-btn:hover, .filter-btn.active {
           color: var(--text-primary);
-          background: rgba(155, 81, 224, 0.2);
-          border-color: var(--accent-purple);
-          box-shadow: 0 0 10px rgba(155, 81, 224, 0.2);
+          background: rgba(197, 168, 128, 0.2);
+          border-color: var(--accent-cyan);
+          box-shadow: 0 0 10px rgba(197, 168, 128, 0.15);
         }
 
         .projects-grid {
@@ -217,6 +217,24 @@ export default function Projects() {
           grid-template-columns: repeat(2, 1fr);
           gap: 24px;
           text-align: left;
+          max-height: 45vh;
+          overflow-y: auto;
+          padding-right: 8px;
+          scrollbar-width: thin;
+          scrollbar-color: var(--accent-cyan) transparent;
+        }
+
+        .projects-grid::-webkit-scrollbar {
+          width: 5px;
+        }
+
+        .projects-grid::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .projects-grid::-webkit-scrollbar-thumb {
+          background: var(--accent-cyan);
+          border-radius: 4px;
         }
 
         .project-card {
@@ -293,14 +311,15 @@ export default function Projects() {
         }
 
         .proj-btn:hover {
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(197, 168, 128, 0.1);
           border-color: var(--accent-cyan);
-          color: var(--accent-cyan);
+          color: var(--text-primary);
         }
 
         @media (max-width: 768px) {
           .projects-grid {
             grid-template-columns: 1fr;
+            max-height: 45vh;
           }
         }
       `}</style>

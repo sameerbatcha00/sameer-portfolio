@@ -49,12 +49,12 @@ function RotatingMesh({ shapeType = "torusknot" }) {
       )}
 
       <meshStandardMaterial
-        color={hovered ? "#ff007f" : clicked ? "#00f2fe" : "#9b51e0"}
+        color={hovered ? "#D8B48F" : clicked ? "#8D7B68" : "#C5A880"}
         wireframe={!hovered}
         roughness={0.15}
         metalness={0.85}
-        emissive={hovered ? "#330018" : "#1a0033"}
-        emissiveIntensity={1.2}
+        emissive={hovered ? "#54432c" : "#3d3221"}
+        emissiveIntensity={1.0}
       />
     </mesh>
   );

@@ -8,11 +8,15 @@ const navItems = [
   { label: "Get In Touch", id: "contact" },
 ];
 
-export default function PageIndicators({ activeSection }) {
+export default function PageIndicators({ activeSection, onNavigate }) {
   const handleIndicatorClick = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+    if (onNavigate) {
+      onNavigate(id);
+    } else {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -57,29 +61,31 @@ export default function PageIndicators({ activeSection }) {
           width: 10px;
           height: 10px;
           border-radius: 50%;
-          background: rgba(255, 255, 255, 0.25);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(42, 36, 33, 0.15);
+          border: 1px solid rgba(42, 36, 33, 0.05);
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .indicator-dot-wrapper:hover .dot {
           background: var(--accent-cyan);
           transform: scale(1.3);
-          box-shadow: 0 0 10px var(--accent-cyan);
+          box-shadow: 0 0 10px rgba(197, 168, 128, 0.4);
         }
 
         .indicator-dot-wrapper.active .dot {
           background: var(--accent-purple);
           transform: scale(1.5);
-          box-shadow: 0 0 15px var(--accent-purple);
+          box-shadow: 0 0 15px rgba(44, 41, 36, 0.2);
         }
 
         .tooltip {
           position: absolute;
           right: 28px;
-          background: rgba(10, 5, 30, 0.85);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: white;
+          background: var(--glass-bg);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border: 1px solid var(--glass-border);
+          color: var(--text-primary);
           padding: 5px 12px;
           font-family: var(--font-sans);
           font-size: 0.75rem;
@@ -90,7 +96,7 @@ export default function PageIndicators({ activeSection }) {
           transform: translateX(10px);
           transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
           white-space: nowrap;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 12px rgba(120, 110, 95, 0.08);
         }
 
         .indicator-dot-wrapper:hover .tooltip {

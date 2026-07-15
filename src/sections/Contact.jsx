@@ -74,10 +74,10 @@ export default function Contact() {
     <section className="section-slide" id="contact">
       <motion.div
         className="glass-panel contact-panel"
-        initial={{ opacity: 0, y: 55 }}
+        initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.15 }}
+        transition={{ type: "spring", stiffness: 80, damping: 14 }}
       >
         <h2 className="section-title">Get In Touch</h2>
 
@@ -145,7 +145,7 @@ export default function Contact() {
                   className="success-box"
                 >
                   <div className="success-icon-wrapper">
-                    <FiCheck size={40} color="#00f2fe" />
+                    <FiCheck size={40} color="#C5A880" />
                   </div>
                   <h3>Message Sent!</h3>
                   <p>
@@ -351,22 +351,22 @@ export default function Contact() {
           text-align: center;
           padding: 40px 20px;
           height: 100%;
-          border: 1px dashed rgba(0, 242, 254, 0.3);
+          border: 1px dashed rgba(197, 168, 128, 0.4);
           border-radius: 16px;
-          background: rgba(0, 242, 254, 0.02);
+          background: rgba(253, 251, 247, 0.6);
         }
 
         .success-icon-wrapper {
           width: 80px;
           height: 80px;
           border-radius: 50%;
-          background: rgba(0, 242, 254, 0.1);
-          border: 1px solid rgba(0, 242, 254, 0.2);
+          background: rgba(197, 168, 128, 0.1);
+          border: 1px solid rgba(197, 168, 128, 0.25);
           display: flex;
           align-items: center;
           justify-content: center;
           margin-bottom: 24px;
-          box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+          box-shadow: 0 0 20px rgba(197, 168, 128, 0.15);
         }
 
         .success-box h3 {

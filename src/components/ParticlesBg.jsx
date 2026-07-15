@@ -8,6 +8,10 @@ const ParticlesBg = () => {
   }, []);
 
   const options = {
+    fullScreen: {
+      enable: true,
+      zIndex: -1,
+    },
     background: {
       color: {
         value: "transparent",
@@ -35,20 +39,20 @@ const ParticlesBg = () => {
           distance: 180,
           links: {
             opacity: 0.35,
-            color: "#00f2fe"
+            color: "#8D7B68"
           },
         },
       },
     },
     particles: {
       color: {
-        value: ["#00f2fe", "#9b51e0", "#ff007f"],
+        value: ["#C5A880", "#8D7B68", "#A88F6D"],
       },
       links: {
-        color: "#888888",
+        color: "#C0B09A",
         distance: 140,
         enable: true,
-        opacity: 0.12,
+        opacity: 0.35,
         width: 1,
       },
       move: {
@@ -70,7 +74,7 @@ const ParticlesBg = () => {
         value: 70,
       },
       opacity: {
-        value: { min: 0.1, max: 0.5 },
+        value: { min: 0.15, max: 0.6 },
       },
       shape: {
         type: "circle",
@@ -84,7 +88,7 @@ const ParticlesBg = () => {
 
   return (
     <ParticlesProvider init={particlesInit}>
-      <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1, pointerEvents: "none" }}>
+      <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1, pointerEvents: "none" }}>
         <Particles id="tsparticles" options={options} />
       </div>
     </ParticlesProvider>

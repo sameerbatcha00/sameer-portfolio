@@ -1,21 +1,30 @@
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 
-export default function CTA() {
+export default function CTA({ onNavigate }) {
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate("contact");
+    } else {
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="section-slide" id="cta">
       <motion.div
         className="glass-panel cta-panel"
-        initial={{ opacity: 0, y: 55 }}
+        initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.15 }}
+        transition={{ type: "spring", stiffness: 80, damping: 14 }}
       >
         <div className="cta-container">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.5 }}
             className="cta-glow-backdrop"
           />
@@ -30,7 +39,7 @@ export default function CTA() {
 
           <div className="cta-action-row">
             <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={handleContactClick}
               className="btn-glow cta-main-btn"
               aria-label="Hire Me and scroll to Contact"
             >
@@ -38,7 +47,7 @@ export default function CTA() {
             </button>
             
             <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={handleContactClick}
               className="btn-outline cta-secondary-btn"
               aria-label="Contact Me and scroll to Contact"
             >
@@ -70,7 +79,7 @@ export default function CTA() {
           width: 300px;
           height: 300px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, rgba(155, 81, 224, 0.15) 50%, transparent 70%);
+          background: radial-gradient(circle, rgba(197, 168, 128, 0.15) 0%, rgba(141, 123, 104, 0.1) 50%, transparent 70%);
           z-index: -1;
           filter: blur(40px);
           top: 50%;
@@ -83,7 +92,7 @@ export default function CTA() {
           font-size: 2.5rem;
           font-weight: 800;
           line-height: 1.2;
-          background: linear-gradient(to right, white, var(--accent-blue), var(--accent-cyan));
+          background: linear-gradient(to right, var(--text-primary), var(--accent-blue), var(--accent-cyan));
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }

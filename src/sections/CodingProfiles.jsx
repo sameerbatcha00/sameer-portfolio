@@ -5,7 +5,7 @@ import { FiCode, FiExternalLink } from "react-icons/fi";
 const profiles = [
   {
     name: "GitHub",
-    icon: <SiGithub size={40} color="#ffffff" />,
+    icon: <SiGithub size={40} color="#2A2421" />,
     url: "https://github.com/sameerbatcha00",
     tagline: "Personal web apps & open source",
     stats: [
@@ -53,10 +53,10 @@ export default function CodingProfiles() {
     <section className="section-slide" id="coding">
       <motion.div
         className="glass-panel coding-panel"
-        initial={{ opacity: 0, y: 55 }}
+        initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.15 }}
+        transition={{ type: "spring", stiffness: 80, damping: 14 }}
       >
         <h2 className="section-title">Coding Profiles</h2>
         
@@ -65,7 +65,7 @@ export default function CodingProfiles() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-120px" }}
+          viewport={{ once: false, amount: 0.15 }}
         >
           {profiles.map((profile, idx) => (
             <motion.a
@@ -81,7 +81,7 @@ export default function CodingProfiles() {
               whileHover={{
                 y: -8,
                 borderColor: profile.color,
-                boxShadow: `0 8px 30px rgba(0,0,0,0.5), 0 0 15px ${profile.color}22`,
+                boxShadow: `0 8px 30px rgba(120, 110, 95, 0.08), 0 0 15px ${profile.color}11`,
               }}
             >
               <div className="profile-header">
@@ -137,7 +137,7 @@ export default function CodingProfiles() {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          background: rgba(10, 5, 30, 0.35);
+          background: var(--card-bg);
           height: 100%;
         }
 
